@@ -1,13 +1,17 @@
-import setuptools
 import os
-
 import sys
-if sys.version_info < (3,7):
+
+import setuptools
+
+
+if sys.version_info < (3, 7):
     sys.exit('Sorry, Python < 3.7 is not supported')
+
 
 def __path(filename):
     return os.path.join(os.path.dirname(__file__),
                         filename)
+
 
 if os.path.exists(__path('build.info')):
     build = open(__path('build.info')).read().strip()
@@ -27,6 +31,7 @@ if os.path.isfile(requirementPath):
 setuptools.setup(
     name="hermit",
     version=version,
+    license="Apache Software License",
     author="Unchained Capital Engineering",
     author_email="engineering@unchained-capital.com",
     description="Unchained Capital Hermit",
@@ -45,7 +50,8 @@ setuptools.setup(
     install_requires=install_requires,
     data_files=[
         ('pybitcointools', ['pybitcointools/english.txt']),
-        ('hermit', ['hermit/wordlists/shard.txt', 'hermit/wordlists/wallet.txt']),
+        ('hermit', ['hermit/wordlists/shard.txt',
+                    'hermit/wordlists/wallet.txt']),
     ],
     include_package_data=True,
 )
